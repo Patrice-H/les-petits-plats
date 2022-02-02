@@ -1,0 +1,90 @@
+/* GENERAL */
+body,
+h1 {
+    margin: 0;
+}
+body {
+    font-family: "Lato", sans-serif;
+}
+/* HEADER */
+header {
+    width: 300px;
+    text-align: center;
+    margin: 40px auto 0;
+}
+h1 {
+    font-family: "DM Sans";
+    font-size: 36px;
+    font-weight: 700;
+    color: #D04F4F;
+}
+/* MAIN */
+main {
+    margin: 20px 100px;
+}
+/* SEARCH */
+#search form {
+    position: relative;
+}
+#main-search {
+    font-size: 18px;
+    background-color: #E7E7E7;
+    width: 100%;
+    height: 70px;
+    padding-left: 20px;
+    border: none;
+    border-radius: 5px;
+}
+#main-search + label {
+    font-size: 32px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#main-search + label:hover {
+    cursor: pointer;
+}
+#search-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+#search-buttons div {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 170px;
+    height: 70px;
+    padding: 0 15px;
+    border-radius: 5px;
+}
+#search-buttons div:hover {
+    cursor: pointer;
+}
+#search-buttons span {
+    display: inline-block;
+    height: fit-content;
+}
+#ingredients {
+    background-color: #3282F7;
+}
+#ingredients:hover {
+    background-color: #2259AB;
+}
+#appliance {
+    background-color: #68D9A4;
+}
+#appliance:hover {
+    background-color: #438C6A;
+}
+#ustensils {
+    background-color: #ED6454;
+}
+#ustensils:hover {
+    background-color: #A14338;
+}
+/* RECIPES */
