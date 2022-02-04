@@ -92,4 +92,4 @@ function buildRecipesGallery(recipes) {
     }
 }
 
-buildRecipesGallery(RECIPES);
+window.onload = buildRecipesGallery(RECIPES);
