@@ -6,6 +6,15 @@ h1 {
 body {
     font-family: "Lato", sans-serif;
 }
+input:focus {
+    outline: none;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
 /* HEADER */
 header {
     width: 300px;
@@ -23,6 +32,7 @@ main {
     margin: 20px 100px;
 }
 /* SEARCH */
+#search,
 #search form {
     position: relative;
 }
@@ -45,12 +55,27 @@ main {
 #main-search + label:hover {
     cursor: pointer;
 }
-#search-buttons {
+/* THEMATIC SEARCH */
+#thematic-bars {
+    position: absolute;
+    width: 100%;
+    padding-top: 10px;
+}
+#thematic-tag-bar {
+    background-color: red;
+    height: 35px;
+    width: 100%;
+    margin-top: 15px;
+}
+#thematic-tag-bar.hidden {
+    display: none;
+}
+#thematic-search-bar {
     display: flex;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 15px;
 }
-#search-buttons div {
+.thematic-search-button {
     font-size: 18px;
     font-weight: 700;
     color: white;
@@ -62,26 +87,68 @@ main {
     padding: 0 15px;
     border-radius: 5px;
 }
-#search-buttons div:hover {
+.thematic-search-menu {
+    position: relative;
+    width: 667px;
+    height: 200px;
+    border-radius: 5px;
+}
+.thematic-search-menu input {
+    font-size: 18px;
+    color: white;
+    background-color: transparent;
+    width: 100%;
+    margin: 20px;
+    border: none;
+}
+.thematic-search-menu input::placeholder {
+    font-weight: 700;
+    color: white;
+    opacity: 0.5;
+}
+.close-btn {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    background-color: transparent;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+}
+.close-btn:hover {
     cursor: pointer;
 }
-#search-buttons span {
+.thematic-search-button.hidden,
+.thematic-search-menu.hidden {
+    display: none;
+}
+.thematic-search-button:hover {
+    cursor: pointer;
+}
+.thematic-search-button span {
     display: inline-block;
     height: fit-content;
 }
-#ingredients {
+#ingredients-open-btn,
+#ingredients-menu {
     background-color: #3282F7;
 }
 #ingredients:hover {
     background-color: #2259AB;
 }
-#appliance {
+#appliance-open-btn,
+#appliance-menu {
     background-color: #68D9A4;
 }
 #appliance:hover {
     background-color: #438C6A;
 }
-#ustensils {
+#ustensils-open-btn,
+#ustensils-menu {
     background-color: #ED6454;
 }
 #ustensils:hover {
@@ -92,7 +159,7 @@ main {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 170px;
 }
 #recipes article {
     /*flex-basis: 30%;*/

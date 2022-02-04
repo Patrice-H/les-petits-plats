@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -32,19 +33,45 @@
                     <span class="fas fa-search"></span>
                 </label>
             </form>
-            <div id="tag"></div>
-            <div id="search-buttons">
-                <div id="ingredients">
-                    <span class="seach-button-label">Ingrédients</span>
-                    <span class="fas fa-chevron-down"></span>
-                </div>
-                <div id="appliance">
-                    <span class="seach-button-label">Appareils</span>
-                    <span class="fas fa-chevron-down"></span>
-                </div>
-                <div id="ustensils">
-                    <span class="seach-button-label">Ustensiles</span>
-                    <span class="fas fa-chevron-down"></span>
+            <div id="thematic-bars">
+                <div class="hidden" id="thematic-tag-bar"></div>
+                <div id="thematic-search-bar">
+                    <div class="thematic-search-button" id="ingredients-open-btn">
+                        <span class="seach-button-label">Ingrédients</span>
+                        <span class="fas fa-chevron-down"></span>
+                    </div>
+                    <div class="thematic-search-menu hidden" id="ingredients-menu">
+                        <form action="#">
+                            <input type="search" id="ingredients-input" placeholder="Rechercher un ingrédient">
+                        </form>
+                        <button class="close-btn" id="ingredients-close-btn">
+                            <span class="fas fa-chevron-up"></span>
+                        </button>
+                    </div>
+                    <div class="thematic-search-button" id="appliance-open-btn">
+                        <span class="seach-button-label">Appareils</span>
+                        <span class="fas fa-chevron-down"></span>
+                    </div>
+                    <div class="thematic-search-menu hidden" id="appliance-menu">
+                        <form action="#">
+                            <input type="search" id="appliance-input" placeholder="Rechercher un appareil">
+                        </form>
+                        <button class="close-btn" id="appliance-close-btn">
+                            <span class="fas fa-chevron-up"></span>
+                        </button>
+                    </div>
+                    <div class="thematic-search-button" id="ustensils-open-btn">
+                        <span class="seach-button-label">Ustensiles</span>
+                        <span class="fas fa-chevron-down"></span>
+                    </div>
+                    <div class="thematic-search-menu hidden" id="ustensils-menu">
+                        <form action="#">
+                            <input type="search" id="ustensils-input" placeholder="Rechercher un ustensile">
+                        </form>
+                        <button class="close-btn" id="ustensils-close-btn">
+                            <span class="fas fa-chevron-up"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
