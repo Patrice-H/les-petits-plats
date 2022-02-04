@@ -1,3 +1,8 @@
+/**
+ * @description Manages the number of description lines according to the length of the recipe title
+ * @param {string} name 
+ * @returns {string} class names list
+ */
 function getNumberOfDescriptionLines(name) {
     let classNames = 'recipe-description ';
     if (name.length > 28) {
@@ -9,6 +14,11 @@ function getNumberOfDescriptionLines(name) {
     return classNames;
 }
 
+/**
+ * @description Return the div of ingredients
+ * @param {[object]} ingredients 
+ * @returns {HTMLElement} div
+ */
 function getRecipeIngredients(ingredients) {
     const DIV = document.createElement('div');
     DIV.setAttribute('class', 'recipe-ingredients');
@@ -37,6 +47,11 @@ function getRecipeIngredients(ingredients) {
     return DIV;
 }
 
+/**
+ * @description Return an article about recipe data
+ * @param {object} recipe 
+ * @returns {HTMLElement} article
+ */
 function getRecipeArticle(recipe) {
     const ARTICLE = document.createElement('article');
     const IMG = document.createElement('img');
@@ -78,6 +93,10 @@ function getRecipeArticle(recipe) {
     return ARTICLE;
 }
 
+/**
+ * @description Build the recipes gallery on page
+ * @param {[object]} recipes 
+ */
 function buildRecipesGallery(recipes) {
     const RECIPES_GALLERY = document.getElementById('recipes');
     const LOOP = 4 - (recipes.length % 4);
@@ -92,4 +111,4 @@ function buildRecipesGallery(recipes) {
     }
 }
 
-window.onload = buildRecipesGallery(RECIPES);
+document.addEventListener('DOMContentLoaded', buildRecipesGallery(RECIPES));
