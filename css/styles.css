@@ -178,7 +178,7 @@ li.blank {
 #ingredients-menu {
     background-color: #3282F7;
 }
-#ingredients:hover {
+#ingredients-open-btn:hover {
     background-color: #2259AB;
 }
 .appliance-tag,
@@ -186,7 +186,7 @@ li.blank {
 #appliance-menu {
     background-color: #68D9A4;
 }
-#appliance:hover {
+#appliance-open-btn:hover {
     background-color: #438C6A;
 }
 .ustensils-tag,
@@ -194,7 +194,7 @@ li.blank {
 #ustensils-menu {
     background-color: #ED6454;
 }
-#ustensils:hover {
+#ustensils-open-btn:hover {
     background-color: #A14338;
 }
 #ingredients-menu li:hover {
