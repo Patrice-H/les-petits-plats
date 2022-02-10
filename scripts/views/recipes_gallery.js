@@ -100,6 +100,9 @@ function getRecipeArticle(recipe) {
 function buildRecipesGallery(recipes) {
     const RECIPES_GALLERY = document.getElementById('recipes');
     const LOOP = 4 - (recipes.length % 4);
+    while(RECIPES_GALLERY.hasChildNodes()) {
+        RECIPES_GALLERY.removeChild(RECIPES_GALLERY.firstChild);
+    }
     recipes.forEach(recipe => {
         const RECIPE_ARTICLE = getRecipeArticle(recipe);
         RECIPES_GALLERY.appendChild(RECIPE_ARTICLE);
