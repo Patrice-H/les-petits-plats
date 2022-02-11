@@ -283,3 +283,7 @@ function getElementsFromMainResearch(wordpart) {
 
     return elements;
 }
+
+async function getAllRecipes() {
+    return RECIPES;
+}

@@ -22,13 +22,12 @@ function getNumberOfDescriptionLines(name) {
 function getRecipeIngredients(ingredients) {
     const DIV = document.createElement('div');
     DIV.setAttribute('class', 'recipe-ingredients');
-
     ingredients.forEach(ingredient => {
         const P = document.createElement('p');
         const NAME = document.createElement('span');
         const QTY = document.createElement('span');
         const BR = document.createElement('br');
-
+        // SET ATTRIBUTES AND CONTENTS
         P.setAttribute('class', 'ingredient');
         NAME.setAttribute('class', 'ingredient-name');
         NAME.textContent = ingredient.ingredient + ': ';
@@ -37,7 +36,7 @@ function getRecipeIngredients(ingredients) {
         } else {
             QTY.textContent = ingredient.quantity;
         }
-
+        // DOM CONSTRUCT
         P.appendChild(NAME);
         P.appendChild(QTY);
         DIV.appendChild(P);
@@ -64,7 +63,7 @@ function getRecipeArticle(recipe) {
     const TIME_TEXT = document.createElement('span');
     const RECIPE_DESCRIPTION = document.createElement('p');
     const RECIPE_INGREDIENTS = getRecipeIngredients(recipe.ingredients);
-
+    // SET ATTRIBUTES AND CONTENTS
     IMG.setAttribute('src', './images/recipe-image.jpg');
     IMG.setAttribute('alt', '');
     IMG.setAttribute('class', 'recipe-image');
@@ -78,7 +77,7 @@ function getRecipeArticle(recipe) {
     TIME_TEXT.textContent = recipe.time + ' min';
     RECIPE_DESCRIPTION.textContent = recipe.description
     RECIPE_DESCRIPTION.setAttribute('class', getNumberOfDescriptionLines(recipe.name));
-
+    // DOM CONSTRUCT
     RECIPE_TIME.appendChild(TIME_ICON);
     RECIPE_TIME.appendChild(TIME_TEXT);
     TEXT_HEADER.appendChild(RECIPE_TITLE);
@@ -113,9 +112,3 @@ function buildRecipesGallery(recipes) {
         RECIPES_GALLERY.appendChild(blank);
     }
 }
-
-async function getAllRecipes() {
-    return RECIPES;
-}
-
-getAllRecipes().then(buildRecipesGallery);
