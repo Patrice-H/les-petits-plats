@@ -114,4 +114,8 @@ function buildRecipesGallery(recipes) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', buildRecipesGallery(RECIPES));
+async function getAllRecipes() {
+    return RECIPES;
+}
+
+getAllRecipes().then(buildRecipesGallery);

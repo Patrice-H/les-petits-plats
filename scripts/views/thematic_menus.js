@@ -180,7 +180,7 @@ const THEMATIC_INPUTS = Array.from(document.getElementsByClassName('thematic-inp
 const TAG_BAR = document.getElementById('thematic-tag-bar');
 const MAIN_INPUT = document.getElementById('main-search');
 
-buildMenuFromRecipes(RECIPES);
+getAllRecipes().then(buildMenuFromRecipes);
 
 THEMATIC_BUTTONS.forEach(button => {
     button.addEventListener('click', () => {
