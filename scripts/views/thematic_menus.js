@@ -14,6 +14,14 @@ function getFilterTags() {
     return elements;
 }
 
+function closeResult() {
+    RESULT.classList.add('hidden');
+}
+
+function openResult() {
+    RESULT.classList.remove('hidden');
+}
+
 function closeTag(element) {
     const ELEMENT = document.getElementById(element);
     TAG_BAR.removeChild(ELEMENT);
@@ -46,7 +54,11 @@ function manageMainSearch(wordpart) {
     let elements = getElementsFromMainResearch(wordpart);
     let recipes = RECIPES;
     if (wordpart.length >= 3) {
-        recipes = getRecipesByUnion(elements);
+        if (elements.length > 0) {
+            recipes = getRecipesByUnion(elements);
+        } else {
+            openResult();
+        }  
     }
     updateContent(recipes);
 }
@@ -179,6 +191,8 @@ const CLOSE_THEMATIC_MENU_BUTTONS = Array.from(document.getElementsByClassName('
 const THEMATIC_INPUTS = Array.from(document.getElementsByClassName('thematic-input'));
 const TAG_BAR = document.getElementById('thematic-tag-bar');
 const MAIN_INPUT = document.getElementById('main-search');
+const RESULT = document.getElementById('result');
+const CLOSE_RESULT = document.getElementById('close-result');
 
 getAllRecipes().then(buildMenuFromRecipes);
 
@@ -200,3 +214,4 @@ THEMATIC_INPUTS.forEach(input => {
 MAIN_INPUT.addEventListener('input', (evt) => {
     manageMainSearch(evt.target.value);
 });
+CLOSE_RESULT.addEventListener('click', closeResult);

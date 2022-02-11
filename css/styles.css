@@ -206,12 +206,35 @@ li.blank {
 #ustensils-menu li:hover {
     color: #ED6454;
 }
+#result {
+    font-size: 18px;
+    color: red;
+    background-color: #E7E7E7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 5px;
+}
+#result.hidden {
+    display: none;
+}
+#result span {
+    margin: 15px;
+}
+#result span:nth-child(2):hover {
+    color: black;
+    cursor: pointer;
+}
+#content {
+    margin-top: 170px;
+}
 /* RECIPES */
 #recipes {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 170px;
 }
 #recipes article {
     /*flex-basis: 30%;*/
