@@ -1,3 +1,9 @@
+/**
+ * @description Return array of recipes from union of arrays of elements
+ * @param {[object]} elements
+ * @see {@link getRecipesFromElement}
+ * @returns {[object]} Recipes table
+ */
 function getRecipesByUnion(elements) {
     let recipes = getRecipesFromElement(elements[0].type, elements[0].name);
     for (let i = 1; i < elements.length; i++) {
@@ -18,6 +24,12 @@ function getRecipesByUnion(elements) {
     return recipes;
 }
 
+/**
+ * @description Return array of recipes from intersection of arrays of elements
+ * @param {[object]} elements
+ * @see {@link getRecipesFromElement}
+ * @returns {[object]} Recipes table
+ */
 function getRecipesByIntersect(elements) {
     let recipes = getRecipesFromElement(elements[0].type, elements[0].name); 
     for (let i = 1; i < elements.length; i++) {
@@ -36,6 +48,11 @@ function getRecipesByIntersect(elements) {
     return recipes;
 }
 
+/**
+ * @description Return array of recipes from title recipe
+ * @param {string} title - Recipe title
+ * @returns {[object]} Array of recipes
+ */
 function getRecipesFromTitle(title) {
     let recipes = [];
     for (let i = 0; i < RECIPES.length; i++) {
@@ -47,6 +64,11 @@ function getRecipesFromTitle(title) {
     return recipes;
 }
 
+/**
+ * @description Return array of recipes from recipe description
+ * @param {string} description 
+ * @returns {[object]} Array of recipes
+ */
 function getRecipesFromDescription(description) {
     let recipes = [];
     for (let i = 0; i < RECIPES.length; i++) {
@@ -58,6 +80,11 @@ function getRecipesFromDescription(description) {
     return recipes;
 }
 
+/**
+ * @description Return array of recipes from recipe ingredient
+ * @param {string} element - Recipe ingredient
+ * @returns {[object]} Array of recipes
+ */
 function getRecipesFromIngredient(element) {
     let recipes = [];
     for (let i = 0; i < RECIPES.length; i++) {
@@ -71,6 +98,11 @@ function getRecipesFromIngredient(element) {
     return recipes;
 }
 
+/**
+ * @description Return array of recipes from recipe appliance
+ * @param {string} element - Recipe appliance
+ * @returns {[object]} Array of recipes
+ */
 function getRecipesFromAppliance(element) {
     let recipes = [];
     for (let i = 0; i < RECIPES.length; i++) {
@@ -82,6 +114,11 @@ function getRecipesFromAppliance(element) {
     return recipes;
 }
 
+/**
+ * @description Return array of recipes from recipe ustensil
+ * @param {string} element - Recipe ustensil
+ * @returns {[object]} Array of recipes
+ */
 function getRecipesFromUstensil(element) {
     let recipes = [];
     for (let i = 0; i < RECIPES.length; i++) {
@@ -95,6 +132,17 @@ function getRecipesFromUstensil(element) {
     return recipes;
 }
 
+/**
+ * @description Return array of recipes from element type of research
+ * @param {string} type - element type
+ * @param {string} element - element name
+ * @see {@link getRecipesFromIngredient}
+ * @see {@link getRecipesFromAppliance}
+ * @see {@link getRecipesFromUstensil}
+ * @see {@link getRecipesFromTitle}
+ * @see {@link getRecipesFromDescription}
+ * @returns {[object]} Array of recipes
+ */
 function getRecipesFromElement(type, element) {
     let recipes;
     switch (type) {
@@ -119,6 +167,11 @@ function getRecipesFromElement(type, element) {
     return recipes;
 }
 
+/**
+ * @description Return array of ingredients from array of recipes
+ * @param {[object]} recipes - Array of recipes
+ * @returns {[string]} Array of ingredients
+ */
 function getIngredientsFromRecipes(recipes) {
     let ingredientsMenu = [];
     for (let i = 0; i < recipes.length; i++) {
@@ -138,6 +191,11 @@ function getIngredientsFromRecipes(recipes) {
     return ingredientsMenu;
 }
 
+/**
+ * @description Return array of appliances from array of recipes
+ * @param {[object]} recipes - Array of recipes
+ * @returns {[string]} Array of appliances
+ */
 function getApplianceFromRecipes(recipes) {
     let applianceMenu = [];
     for (let i = 0; i < recipes.length; i++) {
@@ -155,6 +213,11 @@ function getApplianceFromRecipes(recipes) {
     return applianceMenu;
 }
 
+/**
+ * @description Return array of ustensils from array of recipes
+ * @param {[object]} recipes - Array of recipes
+ * @returns {[string]} Array of ustensils
+ */
 function getUstensilsFromRecipes(recipes) {
     let ustensilsMenu = [];
     for (let i = 0; i < recipes.length; i++) {
@@ -174,6 +237,11 @@ function getUstensilsFromRecipes(recipes) {
     return ustensilsMenu;
 }
 
+/**
+ * @description Return array of titles containing part of the word passed as parameter
+ * @param {string} wordpart 
+ * @returns {[object]} - Array of recipe titles
+ */
 function getTitlesFromResearch(wordpart) {
     let titleTable = [];
     for (let i = 0; i < RECIPES.length; i++) {
@@ -188,6 +256,11 @@ function getTitlesFromResearch(wordpart) {
     return titleTable;
 }
 
+/**
+ * @description Return array of description containing part of the word passed as parameter
+ * @param {string} wordpart 
+ * @returns {[object]} - Array of recipe descriptions
+ */
 function getDescriptionsFromResearch(wordpart) {
     let descriptionTable = [];
     for (let i = 0; i < RECIPES.length; i++) {
@@ -202,6 +275,11 @@ function getDescriptionsFromResearch(wordpart) {
     return descriptionTable;
 }
 
+/**
+ * @description Return array of ingredients containing part of the word passed as parameter
+ * @param {string} wordpart 
+ * @returns {[object]} - Array of recipe ingredients
+ */
 function getIngredientsFromResearch(wordpart) {
     let allIngredients = getIngredientsFromRecipes(RECIPES);
     let ingredientsTable = [];
@@ -217,6 +295,11 @@ function getIngredientsFromResearch(wordpart) {
     return ingredientsTable;
 }
 
+/**
+ * @description Return array of appliances containing part of the word passed as parameter
+ * @param {string} wordpart 
+ * @returns {[object]} - Array of recipe appliances
+ */
 function getApplianceFromResearch(wordpart) {
     let allAppliance = getApplianceFromRecipes(RECIPES);
     let applianceTable = [];
@@ -232,6 +315,11 @@ function getApplianceFromResearch(wordpart) {
     return applianceTable;
 }
 
+/**
+ * @description Return array of ustensils containing part of the word passed as parameter
+ * @param {string} wordpart 
+ * @returns {[object]} - Array of recipe ustensils
+ */
 function getUstensilsFromResearch(wordpart) {
     let allUstensils = getUstensilsFromRecipes(RECIPES);
     let ustensilsTable = [];
@@ -247,6 +335,15 @@ function getUstensilsFromResearch(wordpart) {
     return ustensilsTable;
 }
 
+/**
+ * @description Return array of elements from type and part of the word passed as parameters
+ * @param {string} type - element type
+ * @param {string} wordpart
+ * @see {@link getIngredientsFromResearch}
+ * @see {@link getApplianceFromResearch}
+ * @see {@link getUstensilsFromResearch}
+ * @returns {[object]} Array of elements
+ */
 function getElementsFromResearch(type, wordpart) {
     let elements;
     switch (type) {
@@ -266,6 +363,15 @@ function getElementsFromResearch(type, wordpart) {
     return elements
 }
 
+/**
+ * @description Return array of elements composed of titles, descriptions and ingredient sought from part of a word
+ * @param {string} wordpart
+ * @see {@link getElementsFromMainResearch}
+ * @see {@link getTitlesFromResearch}
+ * @see {@link getDescriptionsFromResearch}
+ * @see {@link getIngredientsFromResearch}
+ * @returns {[object]} Array of elements
+ */
 function getElementsFromMainResearch(wordpart) {
     let elements = [];
     let title = getTitlesFromResearch(wordpart);
@@ -284,6 +390,11 @@ function getElementsFromMainResearch(wordpart) {
     return elements;
 }
 
+/**
+ * @description Return all recipes data
+ * @async
+ * @returns {[object]} Array of recipes
+ */
 async function getAllRecipes() {
     return RECIPES;
 }

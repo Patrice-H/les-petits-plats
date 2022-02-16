@@ -1,3 +1,7 @@
+/**
+ * @description returns an array of objects composed of the names and type of search filters among ingredients, appliances and or utensils
+ * @returns {[object]} Array of elements
+ */
 function getFilterTags() {
     let nodes = TAG_BAR.childNodes;
     let elements = [];
@@ -14,14 +18,27 @@ function getFilterTags() {
     return elements;
 }
 
+/**
+ * @description Hide the unsuccessful main search message
+ */
 function closeResult() {
     RESULT.classList.add('hidden');
 }
 
+/**
+ * @description Display a message in case of unsuccessful main search
+ */
 function openResult() {
     RESULT.classList.remove('hidden');
 }
 
+/**
+ * @description Hide the corresponding tag and reset content
+ * @param {string} element - The tag name
+ * @see {@link getFilterTags}
+ * @see {@link getRecipesByIntersect}
+ * @see {@link updateContent}
+ */
 function closeTag(element) {
     const ELEMENT = document.getElementById(element);
     TAG_BAR.removeChild(ELEMENT);
@@ -33,6 +50,11 @@ function closeTag(element) {
     updateContent(recipes);
 }
 
+/**
+ * @description Display the corresponding filter tag
+ * @param {string} type 
+ * @param {string} name 
+ */
 function displayTag(type, name) {
     let tagClass = type + '-tag';
     const TAG_ELEMENT = document.createElement('p');
@@ -50,6 +72,15 @@ function displayTag(type, name) {
     TAG_BAR.appendChild(TAG_ELEMENT);
 }
 
+/**
+ * @description Launch main research from a part of a word and manage the process
+ * @see {@link getElementsFromMainResearch}
+ * @see {@link getRecipesByUnion}
+ * @see {@link openResult}
+ * @see {@link closeResult}
+ * @see {@link updateContent}
+ * @param {string} wordpart 
+ */
 function manageMainSearch(wordpart) {
     let elements = getElementsFromMainResearch(wordpart);
     let recipes = RECIPES;
@@ -59,18 +90,28 @@ function manageMainSearch(wordpart) {
         } else {
             openResult();
         }  
+    } else {
+        closeResult();
     }
     updateContent(recipes);
 }
 
+/**
+ * @description Manage the specific research from part of word
+ * @param {*} type - type of element
+ * @param {*} wordpart
+ * @see {@link getElementsFromResearch}
+ * @see {@link buildMenuFromInputSearch}
+ * @see {@link buildMenuFromRecipes}
+ * @see {@link resetChildNodes}
+ * @see {@link updateContent} 
+ */
 function manageDisplayFromInputMenuResearch(type, wordpart) {
     let elements;
     let recipes = RECIPES;
     if (wordpart.length >= 3) {
         elements = getElementsFromResearch(type, wordpart);
         if (elements.length > 0) {
-            recipes = getRecipesByUnion(elements);
-            updateContent(recipes);
             buildMenuFromInputSearch(elements);
         } else {
             buildMenuFromRecipes(recipes)
@@ -81,6 +122,16 @@ function manageDisplayFromInputMenuResearch(type, wordpart) {
     }
 }
 
+/**
+ * @description Manage the research by tags
+ * @param {string} filter type of element
+ * @param {string} element name of element
+ * @see {@link displayTag}
+ * @see {@link getFilterTags}
+ * @see {@link getRecipesByIntersect}
+ * @see {@link updateContent}
+ * @see {@link closeThematicMenu}
+ */
 function manageDisplayFromTagResearch(filter, element) {
     displayTag(filter, element);
     let elements = getFilterTags();
@@ -89,17 +140,33 @@ function manageDisplayFromTagResearch(filter, element) {
     closeThematicMenu(filter);
 }
 
+/**
+ * @description Update gallery of recipes and specific search menus
+ * @param {[object]} recipes
+ * @see {@link buildRecipesGallery}
+ * @see {@link buildMenuFromRecipes}
+ */
 function updateContent(recipes) {
     buildRecipesGallery(recipes);
     buildMenuFromRecipes(recipes);
 }
 
+/**
+ * @description Remove all children elements of a DOM element
+ * @param {HTMLElement} domelement 
+ */
 function resetChildNodes(domelement) {
     while(domelement.hasChildNodes()) {
         domelement.removeChild(domelement.firstChild);
     }
 }
 
+/**
+ * @description Update specific research menus from input search
+ * @see {@link resetChildNodes}
+ * @see {@link manageDisplayFromTagResearch}
+ * @param {[object]} elements - Array of elements
+ */
 function buildMenuFromInputSearch(elements) {
     const MENU = document.getElementById(elements[0].type + '-content');
     let tagClass = elements[0].type + '-choice';
@@ -124,6 +191,15 @@ function buildMenuFromInputSearch(elements) {
     MENU.appendChild(UL);
 }
 
+/**
+ * @description Build all specific research menus from elements of recipes
+ * @param {[object]} recipes - Array of recipes
+ * @see {@link resetChildNodes}
+ * @see {@link getIngredientsFromRecipes}
+ * @see {@link getApplianceFromRecipes}
+ * @see {@link getUstensilsFromRecipes}
+ * @see {@link manageDisplayFromTagResearch}
+ */
 function buildMenuFromRecipes(recipes) {
     const MENUS = ['ingredients-content', 'appliance-content', 'ustensils-content'];
     let elements;
@@ -168,15 +244,25 @@ function buildMenuFromRecipes(recipes) {
     }); 
 }
 
+/**
+ * @description Close the specific research menu and reset seach input
+ * @param {string} name - Name of menu
+ */
 function closeThematicMenu(name) {
     let buttonId = name + '-open-btn';
     let menuId = name + '-menu';
     const BUTTON = document.getElementById(buttonId);
     const MENU = document.getElementById(menuId);
+    const INPUT = document.getElementById(name + '-input');
     BUTTON.classList.remove('hidden');
     MENU.classList.add('hidden');
+    INPUT.value = '';
 }
 
+/**
+ * Open the specific research menu
+ * @param {string} name - Name of menu
+ */
 function openThematicMenu(name) {
     let buttonId = name + '-open-btn';
     let menuId = name + '-menu';
