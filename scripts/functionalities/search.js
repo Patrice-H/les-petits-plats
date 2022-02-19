@@ -16,7 +16,7 @@ function getRecipesByUnion(elements) {
                 } 
             }
             if(control) {
-                recipes[recipes.length] = temp[j];
+                recipes.push(temp[j]);
             }
         }
     }
@@ -38,7 +38,7 @@ function getRecipesByIntersect(elements) {
         for (let j = 0; j < recipes.length; j++) {
             for (let k = 0; k < tab.length; k++) {
                 if (tab[k].id === recipes[j].id) {
-                    temp[temp.length] = tab[k];
+                    temp.push(tab[k]);
                 } 
             }
         }
@@ -57,7 +57,7 @@ function getRecipesFromTitle(title) {
     let recipes = [];
     for (let i = 0; i < RECIPES.length; i++) {
         if (RECIPES[i].name.toLowerCase() === title.toLowerCase()) {
-            recipes[recipes.length] = RECIPES[i];
+            recipes.push(RECIPES[i]);
         };
     }
 
@@ -73,7 +73,7 @@ function getRecipesFromDescription(description) {
     let recipes = [];
     for (let i = 0; i < RECIPES.length; i++) {
         if (RECIPES[i].description.toLowerCase() === description.toLowerCase()) {
-            recipes[recipes.length] = RECIPES[i];
+            recipes.push(RECIPES[i]);
         };
     }
 
@@ -90,7 +90,7 @@ function getRecipesFromIngredient(element) {
     for (let i = 0; i < RECIPES.length; i++) {
         for (let j = 0; j < RECIPES[i].ingredients.length; j++) {
             if (RECIPES[i].ingredients[j].ingredient.toLowerCase() === element.toLowerCase()) {
-                recipes[recipes.length] = RECIPES[i];
+                recipes.push(RECIPES[i]);
             }
         }
     }
@@ -107,7 +107,7 @@ function getRecipesFromAppliance(element) {
     let recipes = [];
     for (let i = 0; i < RECIPES.length; i++) {
         if (RECIPES[i].appliance.toLowerCase() === element.toLowerCase()) {
-            recipes[recipes.length] = RECIPES[i];
+            recipes.push(RECIPES[i]);
         }
     }
 
@@ -124,7 +124,7 @@ function getRecipesFromUstensil(element) {
     for (let i = 0; i < RECIPES.length; i++) {
         for (let j = 0; j < RECIPES[i].ustensils.length; j++) {
             if (RECIPES[i].ustensils[j].toLowerCase() === element.toLowerCase()) {
-                recipes[recipes.length] = RECIPES[i];
+                recipes.push(RECIPES[i]);
             }
         }
     }
@@ -144,27 +144,20 @@ function getRecipesFromUstensil(element) {
  * @returns {[object]} Array of recipes
  */
 function getRecipesFromElement(type, element) {
-    let recipes;
     switch (type) {
         case 'ingredients':
-            recipes = getRecipesFromIngredient(element);
-            break;
+            return getRecipesFromIngredient(element);
         case 'appliance':
-            recipes = getRecipesFromAppliance(element);
-            break;
+            return getRecipesFromAppliance(element);
         case 'ustensils':
-            recipes = getRecipesFromUstensil(element);
-            break
+            return getRecipesFromUstensil(element);
         case 'title':
-            recipes = getRecipesFromTitle(element);
-            break;
+            return getRecipesFromTitle(element);
         case 'description':
-            recipes = getRecipesFromDescription(element);
+            return getRecipesFromDescription(element);
         default:
             break;
     }
-
-    return recipes;
 }
 
 /**
@@ -183,7 +176,7 @@ function getIngredientsFromRecipes(recipes) {
                 }
             }
             if (single) {
-                ingredientsMenu[ingredientsMenu.length] = recipes[i].ingredients[j].ingredient;
+                ingredientsMenu.push(recipes[i].ingredients[j].ingredient);
             }
         } 
     }
@@ -206,7 +199,7 @@ function getApplianceFromRecipes(recipes) {
             }
         }
         if (single) {
-            applianceMenu[applianceMenu.length] = recipes[i].appliance;
+            applianceMenu.push(recipes[i].appliance);
         }
     }
 
@@ -229,7 +222,7 @@ function getUstensilsFromRecipes(recipes) {
                 }
             }
             if (single) {
-                ustensilsMenu[ustensilsMenu.length] = recipes[i].ustensils[j];
+                ustensilsMenu.push(recipes[i].ustensils[j]);
             }
         } 
     }
@@ -246,10 +239,10 @@ function getTitlesFromResearch(wordpart) {
     let titleTable = [];
     for (let i = 0; i < RECIPES.length; i++) {
         if (RECIPES[i].name.toLowerCase().includes(wordpart.toLowerCase())) {
-            titleTable[titleTable.length] = {
+            titleTable.push({
                 'type': 'title',
                 'name': RECIPES[i].name
-            }
+            });
         }
     }
 
@@ -265,10 +258,10 @@ function getDescriptionsFromResearch(wordpart) {
     let descriptionTable = [];
     for (let i = 0; i < RECIPES.length; i++) {
         if (RECIPES[i].description.toLowerCase().includes(wordpart.toLowerCase())) {
-            descriptionTable[descriptionTable.length] = {
+            descriptionTable.push({
                 'type': 'description',
                 'name': RECIPES[i].description
-            }
+            });
         }
     }
 
@@ -285,10 +278,10 @@ function getIngredientsFromResearch(wordpart) {
     let ingredientsTable = [];
     for (let i = 0; i < allIngredients.length; i++) {
         if (allIngredients[i].toLowerCase().includes(wordpart.toLowerCase())) {
-            ingredientsTable[ingredientsTable.length] = {
+            ingredientsTable.push({
                 'type': 'ingredients',
                 'name': allIngredients[i]
-            };
+            });
         }
     }
 
@@ -305,10 +298,10 @@ function getApplianceFromResearch(wordpart) {
     let applianceTable = [];
     for (let i = 0; i < allAppliance.length; i++) {
         if (allAppliance[i].toLowerCase().includes(wordpart.toLowerCase())) {
-            applianceTable[applianceTable.length] = {
+            applianceTable.push({
                 'type': 'appliance',
                 'name': allAppliance[i]
-            };
+            });
         } 
     }
 
@@ -325,10 +318,10 @@ function getUstensilsFromResearch(wordpart) {
     let ustensilsTable = [];
     for (let i = 0; i < allUstensils.length; i++) {
         if (allUstensils[i].toLowerCase().includes(wordpart.toLowerCase())) {
-            ustensilsTable[ustensilsTable.length] = {
+            ustensilsTable.push({
                 'type': 'ustensils',
                 'name': allUstensils[i]
-            };
+            });
         }
     }
 
@@ -345,22 +338,16 @@ function getUstensilsFromResearch(wordpart) {
  * @returns {[object]} Array of elements
  */
 function getElementsFromResearch(type, wordpart) {
-    let elements;
     switch (type) {
         case 'ingredients':
-            elements = getIngredientsFromResearch(wordpart);
-            break;
+            return getIngredientsFromResearch(wordpart);
         case 'appliance':
-            elements = getApplianceFromResearch(wordpart);
-            break;
+            return getApplianceFromResearch(wordpart);
         case 'ustensils':
-            elements = getUstensilsFromResearch(wordpart);
-            break;
+            return getUstensilsFromResearch(wordpart);
         default:
             break;
     }
-
-    return elements
 }
 
 /**
@@ -378,13 +365,13 @@ function getElementsFromMainResearch(wordpart) {
     let description = getDescriptionsFromResearch(wordpart);
     let ingredients = getIngredientsFromResearch(wordpart);
     for (let i = 0; i < title.length; i++) {
-        elements[elements.length] = title[i]; 
+        elements.push(title[i]); 
     }
     for (let j = 0; j < description.length; j++) {
-        elements[elements.length] = description[j];
+        elements.push(description[j]);
     }
     for (let k = 0; k < ingredients.length; k++) {
-        elements[elements.length] = ingredients[k];
+        elements.push(ingredients[k]);
     }
 
     return elements;
