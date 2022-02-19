@@ -125,7 +125,7 @@ function getIngredientsFromRecipes(recipes) {
             ingredientsTable.push(
                 item.ingredient.charAt(0).toUpperCase() + 
                 item.ingredient.toLowerCase().slice(1));
-        })
+        });
     });
 
     return Array(...new Set(ingredientsTable));
@@ -158,7 +158,7 @@ function getUstensilsFromRecipes(recipes) {
             ustensilsTable.push(
                 item.charAt(0).toUpperCase() + 
                 item.toLowerCase().slice(1));
-        })
+        });
     });
 
     return Array(...new Set(ustensilsTable));
