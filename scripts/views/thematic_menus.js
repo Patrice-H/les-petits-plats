@@ -11,7 +11,7 @@ function getFilterTags() {
         let element = {
             'type': type,
             'name': name
-        }
+        };
         elements.push(element);
     });
 
@@ -114,7 +114,7 @@ function manageDisplayFromInputMenuResearch(type, wordpart) {
         if (elements.length > 0) {
             buildMenuFromInputSearch(elements);
         } else {
-            buildMenuFromRecipes(recipes)
+            buildMenuFromRecipes(recipes);
             resetChildNodes(document.getElementById(type + '-content'));
         }
     } else {
@@ -211,15 +211,15 @@ function buildMenuFromRecipes(recipes) {
         switch (menu) {
             case 'ingredients-content':
                 elements = getIngredientsFromRecipes(recipes);
-                tagClass = 'ingredients-choice'
+                tagClass = 'ingredients-choice';
                 break;
             case 'appliance-content':
                 elements = getApplianceFromRecipes(recipes);
-                tagClass = 'appliance-choice'
+                tagClass = 'appliance-choice';
                 break;
             case 'ustensils-content':
                 elements = getUstensilsFromRecipes(recipes);
-                tagClass = 'ustensils-choice'
+                tagClass = 'ustensils-choice';
                 break;
             default:
                 break;
