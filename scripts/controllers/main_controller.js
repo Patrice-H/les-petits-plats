@@ -26,10 +26,16 @@ THEMATIC_INPUTS.forEach(input => {
 MAIN_INPUT.addEventListener('input', (evt) => {
     manageMainSearch(evt.target.value);
 });
-CLOSE_RESULT.addEventListener('click', closeResult);
+CLOSE_RESULT.addEventListener('click', () => {
+    closeResult();
+});
 
 // PAGE VIEW
-getAllRecipes().then(data => {
-    buildRecipesGallery(data);
-    buildMenuFromRecipes(data);
-});
+async function init() {
+    await getAllRecipes().then(data => {
+        buildRecipesGallery(data);
+        buildMenuFromRecipes(data);
+    });
+}
+
+window.onload = init;
