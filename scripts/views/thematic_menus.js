@@ -257,7 +257,6 @@ function closeThematicMenu(name) {
     BUTTON.classList.remove('hidden');
     MENU.classList.add('hidden');
     INPUT.value = '';
-    buildMenuFromRecipes(RECIPES);
 }
 
 /**
