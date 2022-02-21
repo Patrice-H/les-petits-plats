@@ -135,7 +135,7 @@ function manageDisplayFromInputMenuResearch(type, wordpart) {
 function manageDisplayFromTagResearch(filter, element) {
     displayTag(filter, element);
     let elements = getFilterTags();
-    let recipes = getRecipesByIntersect(elements);   
+    let recipes = getRecipesByIntersect(elements);
     updateContent(recipes);
     closeThematicMenu(filter);
 }
@@ -257,7 +257,6 @@ function closeThematicMenu(name) {
     BUTTON.classList.remove('hidden');
     MENU.classList.add('hidden');
     INPUT.value = '';
-    buildMenuFromRecipes(RECIPES);
 }
 
 /**
