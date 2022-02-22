@@ -176,7 +176,10 @@ function getIngredientsFromRecipes(recipes) {
                 }
             }
             if (single) {
-                ingredientsMenu.push(recipes[i].ingredients[j].ingredient);
+                ingredientsMenu.push(
+                    recipes[i].ingredients[j].ingredient.charAt(0).toUpperCase() +
+                    recipes[i].ingredients[j].ingredient.slice(1).toLowerCase()
+                );
             }
         } 
     }
@@ -199,7 +202,10 @@ function getApplianceFromRecipes(recipes) {
             }
         }
         if (single) {
-            applianceMenu.push(recipes[i].appliance);
+            applianceMenu.push(
+                recipes[i].appliance.charAt(0).toUpperCase() +
+                recipes[i].appliance.slice(1).toLowerCase()
+            );
         }
     }
 
@@ -222,7 +228,10 @@ function getUstensilsFromRecipes(recipes) {
                 }
             }
             if (single) {
-                ustensilsMenu.push(recipes[i].ustensils[j]);
+                ustensilsMenu.push(
+                    recipes[i].ustensils[j].charAt(0).toUpperCase() +
+                    recipes[i].ustensils[j].slice(1).toLowerCase()
+                );
             }
         } 
     }
