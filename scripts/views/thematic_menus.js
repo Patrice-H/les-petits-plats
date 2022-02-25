@@ -1,3 +1,15 @@
+import { RECIPES } from '../data/recipes_data.js';
+import { 
+    getIngredientsFromRecipes, 
+    getApplianceFromRecipes, 
+    getUstensilsFromRecipes, 
+    getElementsFromResearch, 
+    getRecipesByIntersect, 
+    getRecipesByUnion, 
+    getElementsFromMainResearch
+} from '../functionalities/search.js';
+import { buildRecipesGallery } from '../views/recipes_gallery.js';
+
 /**
  * @description returns an array of objects composed of the names and type of search filters among ingredients, appliances and or utensils
  * @returns {[object]} Array of elements
@@ -21,7 +33,7 @@ function getFilterTags() {
 /**
  * @description Hide the unsuccessful main search message
  */
-function closeResult() {
+export function closeResult() {
     RESULT.classList.add('hidden');
 }
 
@@ -81,7 +93,7 @@ function displayTag(type, name) {
  * @see {@link updateContent}
  * @param {string} wordpart 
  */
-function manageMainSearch(wordpart) {
+export function manageMainSearch(wordpart) {
     let elements = getElementsFromMainResearch(wordpart);
     let recipes = RECIPES;
     if (wordpart.length >= 3) {
@@ -106,7 +118,7 @@ function manageMainSearch(wordpart) {
  * @see {@link resetChildNodes}
  * @see {@link updateContent} 
  */
-function manageDisplayFromInputMenuResearch(type, wordpart) {
+export function manageDisplayFromInputMenuResearch(type, wordpart) {
     let elements;
     let recipes = RECIPES;
     if (wordpart.length >= 3) {
@@ -200,7 +212,7 @@ function buildMenuFromInputSearch(elements) {
  * @see {@link getUstensilsFromRecipes}
  * @see {@link manageDisplayFromTagResearch}
  */
-function buildMenuFromRecipes(recipes) {
+export function buildMenuFromRecipes(recipes) {
     const MENUS = ['ingredients-content', 'appliance-content', 'ustensils-content'];
     let elements;
     let tagClass;
@@ -248,7 +260,7 @@ function buildMenuFromRecipes(recipes) {
  * @description Close the specific research menu and reset seach input
  * @param {string} name - Name of menu
  */
-function closeThematicMenu(name) {
+export function closeThematicMenu(name) {
     let buttonId = name + '-open-btn';
     let menuId = name + '-menu';
     const BUTTON = document.getElementById(buttonId);
@@ -263,7 +275,7 @@ function closeThematicMenu(name) {
  * Open the specific research menu
  * @param {string} name - Name of menu
  */
-function openThematicMenu(name) {
+export function openThematicMenu(name) {
     let buttonId = name + '-open-btn';
     let menuId = name + '-menu';
     const BUTTON = document.getElementById(buttonId);
@@ -271,3 +283,6 @@ function openThematicMenu(name) {
     BUTTON.classList.add('hidden');
     MENU.classList.remove('hidden');
 }
+
+const TAG_BAR = document.getElementById('thematic-tag-bar');
+const RESULT = document.getElementById('result');

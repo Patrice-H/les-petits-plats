@@ -1,4 +1,4 @@
-const RECIPES = [
+export const RECIPES = [
     {
         "id": 1,
         "name" : "Limonade de Coco",
@@ -1723,4 +1723,4 @@ const RECIPES = [
         "appliance": "Four",
         "ustensils":["rouleau à patisserie","fouet"]
     }
-]
+];

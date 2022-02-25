@@ -96,7 +96,7 @@ function getRecipeArticle(recipe) {
  * @description Build the recipes gallery on page
  * @param {[object]} recipes 
  */
-function buildRecipesGallery(recipes) {
+export function buildRecipesGallery(recipes) {
     const RECIPES_GALLERY = document.getElementById('recipes');
     const LOOP = 4 - (recipes.length % 4);
     while(RECIPES_GALLERY.hasChildNodes()) {

@@ -1,10 +1,11 @@
+import { RECIPES } from '../data/recipes_data.js';
 /**
  * @description Return array of recipes from union of arrays of elements
  * @param {[object]} elements
  * @see {@link getRecipesFromElement}
  * @returns {[object]} Recipes table
  */
-function getRecipesByUnion(elements) {
+export function getRecipesByUnion(elements) {
     let recipes = getRecipesFromElement(elements[0].type, elements[0].name);
     for (let i = 1; i < elements.length; i++) {
         let temp = getRecipesFromElement(elements[i].type, elements[i].name);
@@ -30,7 +31,7 @@ function getRecipesByUnion(elements) {
  * @see {@link getRecipesFromElement}
  * @returns {[object]} Recipes table
  */
-function getRecipesByIntersect(elements) {
+export function getRecipesByIntersect(elements) {
     let recipes = getRecipesFromElement(elements[0].type, elements[0].name); 
     for (let i = 1; i < elements.length; i++) {
         let temp = [];
@@ -165,7 +166,7 @@ function getRecipesFromElement(type, element) {
  * @param {[object]} recipes - Array of recipes
  * @returns {[string]} Array of ingredients
  */
-function getIngredientsFromRecipes(recipes) {
+export function getIngredientsFromRecipes(recipes) {
     let ingredientsMenu = [];
     for (let i = 0; i < recipes.length; i++) {
         for (let j = 0; j < recipes[i].ingredients.length; j++) {
@@ -192,7 +193,7 @@ function getIngredientsFromRecipes(recipes) {
  * @param {[object]} recipes - Array of recipes
  * @returns {[string]} Array of appliances
  */
-function getApplianceFromRecipes(recipes) {
+export function getApplianceFromRecipes(recipes) {
     let applianceMenu = [];
     for (let i = 0; i < recipes.length; i++) {
         let single = true;
@@ -217,7 +218,7 @@ function getApplianceFromRecipes(recipes) {
  * @param {[object]} recipes - Array of recipes
  * @returns {[string]} Array of ustensils
  */
-function getUstensilsFromRecipes(recipes) {
+export function getUstensilsFromRecipes(recipes) {
     let ustensilsMenu = [];
     for (let i = 0; i < recipes.length; i++) {
         for (let j = 0; j < recipes[i].ustensils.length; j++) {
@@ -346,7 +347,7 @@ function getUstensilsFromResearch(wordpart) {
  * @see {@link getUstensilsFromResearch}
  * @returns {[object]} Array of elements
  */
-function getElementsFromResearch(type, wordpart) {
+export function getElementsFromResearch(type, wordpart) {
     switch (type) {
         case 'ingredients':
             return getIngredientsFromResearch(wordpart);
@@ -368,7 +369,7 @@ function getElementsFromResearch(type, wordpart) {
  * @see {@link getIngredientsFromResearch}
  * @returns {[object]} Array of elements
  */
-function getElementsFromMainResearch(wordpart) {
+export function getElementsFromMainResearch(wordpart) {
     let elements = [];
     let title = getTitlesFromResearch(wordpart);
     let description = getDescriptionsFromResearch(wordpart);
@@ -391,6 +392,6 @@ function getElementsFromMainResearch(wordpart) {
  * @async
  * @returns {[object]} Array of recipes
  */
-async function getAllRecipes() {
+export async function getAllRecipes() {
     return RECIPES;
 }

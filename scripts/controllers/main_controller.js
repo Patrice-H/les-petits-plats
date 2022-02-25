@@ -1,10 +1,19 @@
+import { getAllRecipes } from "../functionalities/search.js";
+import { buildRecipesGallery } from "../views/recipes_gallery.js";
+import { 
+    buildMenuFromRecipes, 
+    openThematicMenu, 
+    closeThematicMenu, 
+    manageDisplayFromInputMenuResearch, 
+    manageMainSearch, 
+    closeResult 
+} from "../views/thematic_menus.js";
+
 // CONSTANTS
 const THEMATIC_BUTTONS = Array.from(document.getElementsByClassName('thematic-search-button'));
 const CLOSE_THEMATIC_MENU_BUTTONS = Array.from(document.getElementsByClassName('close-btn'));
 const THEMATIC_INPUTS = Array.from(document.getElementsByClassName('thematic-input'));
-const TAG_BAR = document.getElementById('thematic-tag-bar');
 const MAIN_INPUT = document.getElementById('main-search');
-const RESULT = document.getElementById('result');
 const CLOSE_RESULT = document.getElementById('close-result');
 
 // EVENT LISTENERS
