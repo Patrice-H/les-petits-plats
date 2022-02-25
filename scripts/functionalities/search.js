@@ -1,10 +1,12 @@
+import { RECIPES } from "../data/recipes_data.js";
+
 /**
  * @description Return array of recipes from union of arrays of elements
  * @param {[object]} elements
  * @see {@link getRecipesFromElement}
  * @returns {[object]} Recipes table
  */
-function getRecipesByUnion(elements) {
+export function getRecipesByUnion(elements) {
     let recipes = [];
     elements.forEach(element => {
         let elementRecipes = getRecipesFromElement(element.type, element.name);
@@ -20,7 +22,7 @@ function getRecipesByUnion(elements) {
  * @see {@link getRecipesFromElement}
  * @returns {[object]} Recipes table
  */
-function getRecipesByIntersect(elements) {
+export function getRecipesByIntersect(elements) {
     let firstElement = elements.shift();
     let recipes = getRecipesFromElement(firstElement.type, firstElement.name);
     elements.forEach(element => {
@@ -118,7 +120,7 @@ function getRecipesFromElement(type, element) {
  * @param {[object]} recipes - Array of recipes
  * @returns {[string]} Array of ingredients
  */
-function getIngredientsFromRecipes(recipes) {
+export function getIngredientsFromRecipes(recipes) {
     let ingredientsTable = [];
     recipes.forEach(recipe => {
         recipe.ingredients.forEach(item => {
@@ -136,7 +138,7 @@ function getIngredientsFromRecipes(recipes) {
  * @param {[object]} recipes - Array of recipes
  * @returns {[string]} Array of appliances
  */
-function getApplianceFromRecipes(recipes) {
+export function getApplianceFromRecipes(recipes) {
     let applianceTable = [];
     recipes.forEach(recipe => applianceTable.push(
         recipe.appliance.charAt(0).toUpperCase() + 
@@ -151,7 +153,7 @@ function getApplianceFromRecipes(recipes) {
  * @param {[object]} recipes - Array of recipes
  * @returns {[string]} Array of ustensils
  */
-function getUstensilsFromRecipes(recipes) {
+export function getUstensilsFromRecipes(recipes) {
     let ustensilsTable = [];
     recipes.forEach(recipe => {
         recipe.ustensils.forEach(item => {
@@ -266,7 +268,7 @@ function getUstensilsFromResearch(wordpart) {
  * @see {@link getUstensilsFromResearch}
  * @returns {[object]} Array of elements
  */
-function getElementsFromResearch(type, wordpart) {
+export function getElementsFromResearch(type, wordpart) {
     switch (type) {
         case 'ingredients':
             return getIngredientsFromResearch(wordpart);
@@ -288,7 +290,7 @@ function getElementsFromResearch(type, wordpart) {
  * @see {@link getIngredientsFromResearch}
  * @returns {[object]} Array of elements
  */
-function getElementsFromMainResearch(wordpart) {
+export function getElementsFromMainResearch(wordpart) {
     let elements = [];
     let titles = getTitlesFromResearch(wordpart);
     let descriptions = getDescriptionsFromResearch(wordpart);
@@ -305,6 +307,6 @@ function getElementsFromMainResearch(wordpart) {
  * @async
  * @returns {[object]} Array of recipes
  */
-async function getAllRecipes() {
+export async function getAllRecipes() {
     return RECIPES;
 }
